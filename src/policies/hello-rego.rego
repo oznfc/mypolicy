@@ -4,7 +4,7 @@ package policies.hello
 # only grant access when explicitly granted
 
 default allowed = false
-default visible = false
+default visible = true
 default enabled = false
 
 allowed {
