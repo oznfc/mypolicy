@@ -3,8 +3,10 @@ name: build-release
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     tags:
-    - '*'
+      - '*'
 
 jobs:
   release_policy:
@@ -34,6 +36,7 @@ jobs:
     - name: Calculate image tags
       id: "tags"
       run: |
+        tags=""
         while read -r tag; do
           tags="$tags ${{ steps.config.outputs.repo }}:$tag"
         done < <(echo "${{ steps.sver.outputs.version }}")
